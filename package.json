@@ -1,0 +1,31 @@
+{
+  "name": "sockets",
+  "version": "1.0.0",
+  "description": "sockets application",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joojo7/socket-application.git"
+  },
+  "keywords": [
+    "sockets",
+    "chat",
+    "node"
+  ],
+  "author": "Joojo Dontoh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joojo7/socket-application/issues"
+  },
+  "homepage": "https://github.com/Joojo7/socket-application#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7",
+    "socket.io": "^3.1.0"
+  }
+}
