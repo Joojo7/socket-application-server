@@ -9,7 +9,7 @@ const httpServer = require('http').createServer((req, res) => {
 
   const io = require('socket.io')(httpServer, {
     cors: {
-      origin: "http://localhost:8000",
+      origin: "https://chat-app-frontend777.herokuapp.com",
       methods: ["GET", "POST"],
       allowedHeaders: ["my-custom-header"],
       credentials: true
