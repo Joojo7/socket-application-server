@@ -1,5 +1,4 @@
 const httpServer = require('http').createServer((req, res) => {
-
     res.setHeader('Access-Control-Allow-Origin', 'https://chat-app-frontend777.herokuapp.com');
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
@@ -11,15 +10,15 @@ const httpServer = require('http').createServer((req, res) => {
     cors: {
       origin: "https://chat-app-frontend777.herokuapp.com",
       methods: ["GET", "POST"],
-      allowedHeaders: ["my-custom-header"],
       credentials: true
     }
   });
 
   const users = {}
   
+  // get user's name after they connect and append it to any message they send out
   io.on('connection', socket => {
-      socket.on('send-chat-message', msg => {
+    socket.on('send-chat-message', msg => {
         socket.broadcast.emit('chat-message', {message: msg, name: users[socket.id]})
     })
 
@@ -31,12 +30,12 @@ const httpServer = require('http').createServer((req, res) => {
     socket.on('disconnect', () => {
       socket.broadcast.emit('user-disconnected', users[socket.id])
       delete users[socket.id]
-  })
+    })
 
      
   });
   
   const PORT = process.env.PORT || 3000;
-  httpServer.listen(PORT, () => console.log(`Running server on ${process.env.ENV} 🚀. \nListening on ${ PORT } 👂`));
+  httpServer.listen(PORT, () => console.log(`Running server on 🚀. \nListening on ${ PORT } 👂`));
 
   
