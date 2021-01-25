@@ -1,5 +1,8 @@
+if (process.env.ENV != "production" && process.env.ENV != "dev_online") {
+  require("dotenv").config();
+}
 const httpServer = require('http').createServer((req, res) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://chat-app-frontend777.herokuapp.com');
+    res.setHeader('Access-Control-Allow-Origin', `${process.env.FRONTEND_URL}`);
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     res.setHeader('Access-Control-Allow-Credentials', true);
@@ -8,7 +11,7 @@ const httpServer = require('http').createServer((req, res) => {
 
   const io = require('socket.io')(httpServer, {
     cors: {
-      origin: "https://chat-app-frontend777.herokuapp.com",
+      origin: `${process.env.FRONTEND_URL}`,
       methods: ["GET", "POST"],
       credentials: true
     }
@@ -36,6 +39,6 @@ const httpServer = require('http').createServer((req, res) => {
   });
   
   const PORT = process.env.PORT || 3000;
-  httpServer.listen(PORT, () => console.log(`Running server on 🚀. \nListening on ${ PORT } 👂`));
+  httpServer.listen(PORT, () => console.log(`Running server on ${process.env.ENV} 🚀. \nListening on ${ PORT } 👂`));
 
   
